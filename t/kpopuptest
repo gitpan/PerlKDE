@@ -19,7 +19,7 @@ sub new {
     return $self;
 }
 
-sub mousePressEvent { shift->{menu}->popup(Qt::Cursor::pos) }
+sub mousePressEvent { shift->{menu}->popup(Qt::Cursor::pos()) }
 sub paintEvent { shift->drawText(32, 32, "Press a Mouse Button!") }
 
 package main;

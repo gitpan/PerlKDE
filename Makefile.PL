@@ -24,9 +24,10 @@ $MAKE = 'KDE-1.1.1';
     CC => 'g++',
     CCFLAGS => '',
     DEFINE => '',
-    INC => '-I. -I$(KDEDIR)/include -I$(QTDIR)/include ' .
+    INC => '-I$(KDEDIR)/include -I$(QTDIR)/include ' .
            '-I/usr/X11R6/include -I/usr/include/kde -I/usr/include/qt',
-    LIBS => '-L/usr/X11R6/lib -lkdecore -lkdeui -lkfm -lqt -lX11',
+    LIBS => "-L$ENV{QTDIR}/lib -L$ENV{KDEDIR}/lib -L/usr/X11R6/lib " .
+	    "-lkdecore -lkdeui -lkfm -lqt -lX11",
     OPTIMIZE => '-O'
 );
 ##########
@@ -43,7 +44,7 @@ unless(@ARGV && $ARGV[0] =~ /^-f/) {
 	DIR => [ $MAKE ],
 	LINK => [ 'Qt-1.4' ],
 	TYPEMAPS => [ "$MAKE/typemap" ],
-	INCLUDE => [ "pigmodule_$MAKE.h" ],
+	INCLUDE => [ "pigmodule_KDE.h" ],
 	VIRTUALHEADER => 'pigvirtual.h',
 	SOURCEDIR => '.',
 	Source => \$filelist
@@ -87,6 +88,8 @@ sub configurate {
     return { OBJECT => $object, DEFINE => $define, LIBS => $libs };
 }
 
+$Args{INC} .= ' -I. -I./include';
+
 WriteMakefile(
 # These arguments should remain unchanged.
     %Args,
@@ -94,6 +97,7 @@ WriteMakefile(
     DISTNAME => 'PerlKDE',
     VERSION_FROM => 'KDE.pm',
     PM => { 'KDE.pm', '$(INST_LIBDIR)/KDE.pm' },
+    PREREQ_PM => { 'Qt' => '2.103' },
     CONFIGURE => \&configurate,
     realclean => { FILES => 'pig_* _pig*' }
 );

@@ -4,8 +4,8 @@
 suicidal virtual class KApplication : virtual QApplication {
     enum ConfigState { APPCONFIG_NONE, APPCONFIG_READONLY, APPCONFIG_READWRITE };
 
-#   KApplication(int &, char **);
-#   KApplication(int &, char **, const QString &);
+    KApplication(int &{@argc(1)}, char **{argv});
+    KApplication(int &{@argc(1)}, char **{argv}, const QString &);
     virtual ~KApplication();
     virtual void addDropZone(KDNDDropZone *);
     const QString &appName() const;

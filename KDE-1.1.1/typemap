@@ -112,11 +112,21 @@ void* => ptr
 ptr => void*
 
 
+KEditLineType => enum
 KApplication::ConfigState => enum
 KCombo::Policy => enum
+KLed::Color => enum
+KLed::Look => enum
+KLed::State => enum
+KLedLamp::State => enum
 KMenuBar::menuPosition => enum
+KNewPanner::Orientation => enum
+KNewPanner::Units => enum
 KProgress::BarStyle => enum
 KProgress::Orientation => enum
+KRuler::direction => enum
+KRuler::metric_style => enum
+KRuler::paint_style => enum
 KStatusBar::BarStatus => enum
 KStatusBar::InsertOrder => enum
 KStatusBar::Position => enum

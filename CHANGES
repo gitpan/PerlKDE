@@ -1,3 +1,13 @@
+Changes from 0.002 to 0.003  (2000-Jan-26)
+---------------------------
+
+- Requires PerlQt-2.103 compiled with Qt-1.4
+- Finished adding all classes from -lkdeui
+- Moved headers into include/
+- Changed Makefile.PL LIBS from $(KDEDIR) to $ENV{KDEDIR}
+- Can now create any Application, not just KDE::Application
+
+
 Changes from 0.001 to 0.002  (2000-Jan-21)
 ---------------------------
 

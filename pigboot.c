@@ -58,70 +58,6 @@ SV *gv_store(const char *name, SV *value) {    // kludge
     return value;
 }
 
-static char **pig_create_stringarray_from_av(AV *pigav, int &pigcount) {
-    char **pigarray;
-    I32 pigcnt, pigidx, pigarg;
-    STRLEN n_a;
-
-    pigcnt = av_len(pigav);
-    pigarray = new char *[pigcnt + 2];
-    pigarg = 0;
-    for(pigidx = 0; pigidx <= pigcnt; pigidx++) {
-        SV **pigsvp = av_fetch(pigav, pigidx, 0);
-        if(pigsvp)
-            pigarray[pigarg++] = SvPV(*pigsvp, n_a);
-    }
-    pigarray[pigarg] = 0;
-    pigcount = pigarg;
-    return pigarray;
-}
-
-extern "C" XS(PIG_KApplication_new) {
-    dXSARGS;
-    const char *pigclass;
-    AV *pigargs;
-    STRLEN n_a;
-
-    if(items < 1 || items > 2)
-        die("KApplication::new");
-
-    pigclass = SvPV(ST(0), n_a);
-
-    if(!SvROK(ST(1))) {
-        pigargs = newAV();
-        die("Needed an argument\n");
-        // must do something here!!!
-    } else {
-        pigargs = (AV *)SvRV(ST(1));
-        SvREFCNT_inc((SV *)pigargs);
-    }
-
-    av_unshift(pigargs, 1);
-    av_store(pigargs, 0, newSVsv(perl_get_sv("0", TRUE)));
-
-    char **pigargv;
-    int pigargc;
-    pigargv = pig_create_stringarray_from_av(pigargs, pigargc);
-    av_shift(pigargs);
-
-    KApplication *pigapp;
-
-    if(items > 2) {
-	const char *pigappname;
-	STRLEN n_a;
-	pigappname = SvPV(ST(2), n_a);
-	pigapp = new pig_enhanced_KApplication(pigargc, pigargv, pigappname);
-    } else {
-        pigapp = new pig_enhanced_KApplication(pigargc, pigargv);
-    }
-
-    ST(0) = pig_new_castobject(pigapp, "KApplication", pigclass);
-
-    SvREFCNT_dec(pigargs);
-    XSRETURN(1);
-}
-
-
 extern "C" XS(PIG_app_import) {
     dXSARGS;
     const char *pigclass = HvNAME(PIGcurcop->cop_stash);
@@ -188,7 +124,7 @@ extern "C" XS(boot_KDE) {
     pig_load_constants("KDE", PIG_constant_KDE);
 
     __pig_module_used("KDE::app");
-    newXS("KDE::Application::new", PIG_KApplication_new, __FILE__);
+//    newXS("KDE::Application::new", PIG_KApplication_new, __FILE__);
     newXS("KDE::app::import", PIG_app_import, __FILE__);
     newXS("KDE::import", PIG_KDE_import, __FILE__);
 

@@ -1,10 +1,10 @@
-#ifndef PIGMODULE_KDE_H
-#define PIGMODULE_KDE_H
+#ifndef PIGMODULE_QT_H
+#define PIGMODULE_QT_H
 
 /*
- * All the headers needed for PerlKDE are included here
+ * All the headers needed for PerlQt are included here
  *
- * Copyright (C) 1999, 2000, Ashley Winters <jql@accessone.com>
+ * Copyright (C) 1999, Ashley Winters <jql@accessone.com>
  *
  * You may distribute under the terms of the LGPL as specified in the
  * README.LICENSE file which should be included with this library.
@@ -18,6 +18,5 @@
 #include "pigfunc_base.h"
 #include "pigfunc_object.h"
 #include "pigfunc_qt.h"
-#include "pigtype_kde.h"
 
-#endif  // PIGMODULE_KDE_H
+#endif  // PIGMODULE_QT_H
