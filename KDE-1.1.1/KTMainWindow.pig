@@ -28,9 +28,9 @@ protected:
     virtual void focusOutEvent(QFocusEvent *);
     virtual bool queryClose();
     virtual bool queryExit();
-;    virtual void readProperties(KConfig *);
+    virtual void readProperties(KConfig *);
     virtual void resizeEvent(QResizeEvent *);
-;    virtual void saveData(KConfig *);
-;    virtual void saveProperties(KConfig *);
+    virtual void saveData(KConfig *);
+    virtual void saveProperties(KConfig *);
     virtual void updateRects() slot;
 } KDE::TMainWindow;

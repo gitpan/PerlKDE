@@ -157,7 +157,7 @@ extern "C" XS(PIG_app_import) {
         LEAVE;
     }
 
-    pigvar = new char[strlen(pigclass) + 7];
+    pigvar = new char [strlen(pigclass) + 7];
     sprintf(pigvar, "%s::app", pigclass);
     gv_store(pigvar, pigapp);
     SvREFCNT_dec(pigapp);
@@ -166,6 +166,16 @@ extern "C" XS(PIG_app_import) {
     XSRETURN_EMPTY;
 }
 
+extern "C" XS(PIG_KDE_import) {
+    dXSARGS;
+    const char *pigclass = HvNAME(PIGcurcop->cop_stash);
+    char *pigvar;
+
+    pigvar = new char [strlen(pigclass) + 7];
+    sprintf(pigvar, "%s::app", pigclass);
+    perl_get_sv(pigvar, TRUE | GV_ADDMULTI);	// No warnings
+    delete [] pigvar;
+}
 
 extern "C" XS(boot_KDE) {
     dXSARGS;
@@ -180,6 +190,7 @@ extern "C" XS(boot_KDE) {
     __pig_module_used("KDE::app");
     newXS("KDE::Application::new", PIG_KApplication_new, __FILE__);
     newXS("KDE::app::import", PIG_app_import, __FILE__);
+    newXS("KDE::import", PIG_KDE_import, __FILE__);
 
     XSRETURN_UNDEF;
 }

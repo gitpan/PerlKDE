@@ -1,0 +1,6 @@
+Changes from 0.001 to 0.002  (2000-Jan-21)
+---------------------------
+
+- Requires PerlQt-2.102 compiled with Qt-1.4
+- Added several classes
+- Added several test applications, look in the t/ directory

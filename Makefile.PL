@@ -24,8 +24,9 @@ $MAKE = 'KDE-1.1.1';
     CC => 'g++',
     CCFLAGS => '',
     DEFINE => '',
-    INC => '-I/usr/X11R6/include -I/usr/include/qt -I.',
-    LIBS => '-lkdecore -lkdeui -lkfm -lqt -L/usr/X11R6/lib -lX11',
+    INC => '-I. -I$(KDEDIR)/include -I$(QTDIR)/include ' .
+           '-I/usr/X11R6/include -I/usr/include/kde -I/usr/include/qt',
+    LIBS => '-L/usr/X11R6/lib -lkdecore -lkdeui -lkfm -lqt -lX11',
     OPTIMIZE => '-O'
 );
 ##########
@@ -69,7 +70,7 @@ sub configurate {
     };
 
     my $define = "-DPIGDEBUG=$debug -DPIG_QT " .
-	"-DPIGPERL_PATCHLEVEL=$pl -DPIGPERL_SUBVERSION=$sv $Args{DEFINE}";
+	"-DPIGPERL_PL=$pl -DPIGPERL_SV=$sv $Args{DEFINE}";
 
     my $libs = $Args{LIBS};
 

@@ -1,3 +1,4 @@
+
 #include <kapp.h>
 
 suicidal virtual class KApplication : virtual QApplication {
@@ -6,9 +7,9 @@ suicidal virtual class KApplication : virtual QApplication {
 #   KApplication(int &, char **);
 #   KApplication(int &, char **, const QString &);
     virtual ~KApplication();
-;    virtual void addDropZone(KDNDDropZone *);
+    virtual void addDropZone(KDNDDropZone *);
     const QString &appName() const;
-;    const char *checkRecoverFile(const char *, bool &);
+    const char *checkRecoverFile(const char *, bool &);
 ;    Display *getDisplay();
     Atom getDndEnterProtocolAtom();
     Atom getDndLeaveProtocolAtom();
@@ -19,17 +20,17 @@ suicidal virtual class KApplication : virtual QApplication {
     virtual bool eventFilter(QObject *, QEvent *);
     static QString findFile(const char *);
     const char *getCaption() const;
-;    KCharsets *getCharsets() const;
-;    KConfig *getConfig() const;
+    KCharsets *getCharsets() const;
+    KConfig *getConfig() const;
     KApplication::ConfigState getConfigState() const;
     QPopupMenu *getHelpMenu(bool, const char *);
     QPixmap getIcon() const;
-;    KIconLoader *getIconLoader();
+    KIconLoader *getIconLoader();
     static KApplication *getKApplication();
 ;    bool getKDEFonts(QStrList *);
-;    KLocale *getLocale();
+    KLocale *getLocale();
     QPixmap getMiniIcon() const;
-;    KConfig *getSessionConfig();
+    KConfig *getSessionConfig();
     void invokeHTMLHelp(QString, QString) const;
     bool isRestored() const;
     static const QString &kde_appsdir();
@@ -48,8 +49,8 @@ suicidal virtual class KApplication : virtual QApplication {
     static QString localconfigdir();
     bool localeConstructed() const;
     static QString localkdedir();
-;    virtual void removeDropZone(KDNDDropZone *);
-;    virtual void setRootDropZone(KDNDDropZone *);
+    virtual void removeDropZone(KDNDDropZone *);
+    virtual void setRootDropZone(KDNDDropZone *);
     void setTopWidget(QWidget *);
     void setWmCommand(const char *);
     const char *tempSaveName(const char *);

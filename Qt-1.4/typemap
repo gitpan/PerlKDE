@@ -1,5 +1,6 @@
 bool => bool
 uint => uint
+unsigned => uint
 int => int
 long => long
 char => char
@@ -8,10 +9,19 @@ const char* => cstring
 int* => intptr
 bool* => boolptr
 float* => floatptr
+
 qt_QString = const char *
-QString => qt_QString_ptr &
+qt_QString_ptr = const char *
+qt_QString_ref = const char *
+qt_const_QString_ref = const char *
+qt_const_QString_ptr = const char *
+QString => qt_QString
 QString* => qt_QString_ptr
 QString& => qt_QString_ref
+const QString => qt_const_QString_ref
+const QString* => qt_const_QString_ptr
+const QString& => qt_const_QString_ref
+
 double => double
 float => float
 int& => intref
@@ -24,7 +34,7 @@ const QObjectList* => qt_QObjectList_ptr
 const QByteArray& => qt_QByteArray_ptr &
 const QFileInfo& => qt_QFileInfo_ptr &
 
-qt_QStrList_ptr = const QStrList *
+qt_QStrList_ptr = (QStrList*)
 enum = int
 qt_HVorientation = int
 
@@ -99,3 +109,21 @@ Display* => ptr
 void* => ptr
 
 ptr => void*
+
+
+KApplication::ConfigState => enum
+KCombo::Policy => enum
+KMenuBar::menuPosition => enum
+KProgress::BarStyle => enum
+KProgress::Orientation => enum
+KStatusBar::BarStatus => enum
+KStatusBar::InsertOrder => enum
+KStatusBar::Position => enum
+KToolBar::BarPosition => enum
+KToolBar::BarStatus => enum
+TextAlignment => enum
+Atom => long
+Window => long
+const KPath* => kde_const_KPath_ptr
+
+kde_const_KPath_ptr = (const KPath*)
