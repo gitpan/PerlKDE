@@ -1,4 +1,5 @@
 bool => bool
+bool& => boolptr &
 uint => uint
 unsigned => uint
 int => int
@@ -35,8 +36,8 @@ const QByteArray& => qt_QByteArray_ptr &
 const QFileInfo& => qt_QFileInfo_ptr &
 
 qt_QStrList_ptr = (QStrList*)
-enum = int
-qt_HVorientation = int
+enum = (int)
+qt_HVorientation = (int)
 
 BGMode => enum
 GUIStyle => enum
@@ -109,21 +110,3 @@ Display* => ptr
 void* => ptr
 
 ptr => void*
-
-
-KApplication::ConfigState => enum
-KCombo::Policy => enum
-KMenuBar::menuPosition => enum
-KProgress::BarStyle => enum
-KProgress::Orientation => enum
-KStatusBar::BarStatus => enum
-KStatusBar::InsertOrder => enum
-KStatusBar::Position => enum
-KToolBar::BarPosition => enum
-KToolBar::BarStatus => enum
-TextAlignment => enum
-Atom => long
-Window => long
-const KPath* => kde_const_KPath_ptr
-
-kde_const_KPath_ptr = (const KPath*)

@@ -17,6 +17,10 @@
 #
 
 $MAKE = 'KDE-1.1.1';
+$LINK = 'Qt-1.4';
+
+$ENV{QTDIR} = '/usr/lib/qt' unless $ENV{QTDIR};
+$ENV{KDEDIR} = '/opt/kde' unless $ENV{KDEDIR};
 
 ##########
 # Please modify these arguments as needed
@@ -42,8 +46,8 @@ my $filelist;
 unless(@ARGV && $ARGV[0] =~ /^-f/) {
     GenerateSource(
 	DIR => [ $MAKE ],
-	LINK => [ 'Qt-1.4' ],
-	TYPEMAPS => [ "$MAKE/typemap" ],
+	LINK => [ $LINK ],
+	TYPEMAPS => [ "$LINK/typemap", "$MAKE/typemap" ],
 	INCLUDE => [ "pigmodule_KDE.h" ],
 	VIRTUALHEADER => 'pigvirtual.h',
 	SOURCEDIR => '.',
@@ -97,7 +101,7 @@ WriteMakefile(
     DISTNAME => 'PerlKDE',
     VERSION_FROM => 'KDE.pm',
     PM => { 'KDE.pm', '$(INST_LIBDIR)/KDE.pm' },
-    PREREQ_PM => { 'Qt' => '2.103' },
+    PREREQ_PM => { 'Qt' => '2.104' },
     CONFIGURE => \&configurate,
     realclean => { FILES => 'pig_* _pig*' }
 );

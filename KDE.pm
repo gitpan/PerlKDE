@@ -12,7 +12,7 @@ use Qt 2.0;
 require DynaLoader;
 
 @ISA = qw(DynaLoader);
-$VERSION = '0.003';
+$VERSION = '0.004';
 
 bootstrap KDE $VERSION;
 
